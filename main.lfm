@@ -1,0 +1,133 @@
+object frmMain: TfrmMain
+  Left = 429
+  Height = 339
+  Top = 196
+  Width = 407
+  Caption = 'Bytes to PNG'
+  ClientHeight = 339
+  ClientWidth = 407
+  LCLVersion = '2.2.0.4'
+  object editWidth: TSpinEdit
+    Left = 33
+    Height = 26
+    Top = 31
+    Width = 87
+    TabOrder = 0
+  end
+  object editHeight: TSpinEdit
+    Left = 33
+    Height = 26
+    Top = 80
+    Width = 87
+    TabOrder = 1
+  end
+  object textBytes: TMemo
+    Left = 33
+    Height = 128
+    Top = 144
+    Width = 342
+    Lines.Strings = (
+      'textBytes'
+    )
+    TabOrder = 2
+  end
+  object imgPreview: TImage
+    Left = 296
+    Height = 90
+    Top = 14
+    Width = 90
+    Stretch = True
+  end
+  object btnBgColour: TColorButton
+    Left = 152
+    Height = 25
+    Top = 79
+    Width = 75
+    BorderWidth = 2
+    ButtonColorSize = 16
+    ButtonColor = clWhite
+  end
+  object btnFgColour: TColorButton
+    Left = 152
+    Height = 25
+    Top = 32
+    Width = 75
+    BorderWidth = 2
+    ButtonColorSize = 16
+    ButtonColor = clBlack
+  end
+  object btnCreate: TButton
+    Left = 300
+    Height = 25
+    Top = 304
+    Width = 75
+    Caption = 'btnCreate'
+    OnClick = btnCreateClick
+    TabOrder = 3
+  end
+  object Label1: TLabel
+    Left = 33
+    Height = 16
+    Top = 14
+    Width = 36
+    Caption = 'Width'
+  end
+  object Label2: TLabel
+    Left = 33
+    Height = 16
+    Top = 64
+    Width = 40
+    Caption = 'Height'
+  end
+  object Label3: TLabel
+    Left = 152
+    Height = 16
+    Top = 14
+    Width = 110
+    Caption = 'Foreground colour'
+  end
+  object Label4: TLabel
+    Left = 152
+    Height = 16
+    Top = 64
+    Width = 111
+    Caption = 'Background colour'
+  end
+  object Label5: TLabel
+    Left = 33
+    Height = 16
+    Top = 128
+    Width = 68
+    Caption = 'Byte values'
+  end
+  object textOutputFile: TFileNameEdit
+    Left = 33
+    Height = 28
+    Top = 304
+    Width = 247
+    FileName = 'textOutputFile'
+    FilterIndex = 0
+    HideDirectories = False
+    ButtonWidth = 23
+    NumGlyphs = 1
+    MaxLength = 0
+    TabOrder = 4
+    Text = 'textOutputFile'
+  end
+  object checkRowsFirst: TCheckBox
+    Left = 152
+    Height = 21
+    Top = 112
+    Width = 90
+    Caption = 'Rows First'
+    TabOrder = 5
+    Visible = False
+  end
+  object Label6: TLabel
+    Left = 33
+    Height = 16
+    Top = 288
+    Width = 66
+    Caption = 'Output file'
+  end
+end
