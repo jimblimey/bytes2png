@@ -102,15 +102,12 @@ procedure TfrmMain.btnCreateClick(Sender: TObject);
 var
   pngbmp: TPortableNetworkGraphic;
   w,h: Integer;
-  x,y,yc,xs: Integer;
+  x,y,xs: Integer;
   s: String;
   values: Array of Byte;
   i: Integer;
   a: TStringArray;
 begin
-  // 0, 0, 0, 3, 7, 3, 3, 3, 31, 63, 110, 68, 110, 127, 63, 31, 0, 0, 0, 0, 0, 0, 0, 128, 240, 249, 237, 70, 237, 253, 248, 240
-  // top left, bottom left, top right, bottom right
-
   w := editWidth.Value * 8;
   h := editHeight.Value * 8;
   // Calculate total number of values based on given width and height
