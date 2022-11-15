@@ -110,17 +110,9 @@ var
 begin
   w := editWidth.Value * 8;
   h := editHeight.Value * 8;
-  // Calculate total number of values based on given width and height
-  SetLength(values, (w*h) div 8);
-  for i := 0 to High(values) do values[i] := 0;
-  // Import byte values into array
   s := textBytes.Text;
   a := s.Split(',');
-  if High(a) <> High(values) then
-  begin
-    showmessage('poo');
-    exit;
-  end;
+  SetLength(values,High(a));
   for i := 0 to High(values) do
   begin
     values[i] := trim(a[i]).ToInteger;
