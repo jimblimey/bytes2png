@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, Spin, StdCtrls,
-  ExtCtrls, Buttons, EditBtn;
+  ExtCtrls, Buttons, EditBtn, ExtDlgs;
 
 type
 
@@ -16,19 +16,23 @@ type
     btnBgColour: TColorButton;
     btnFgColour: TColorButton;
     btnCreate: TButton;
+    btnSave: TButton;
     checkRowsFirst: TCheckBox;
-    Label6: TLabel;
-    textOutputFile: TFileNameEdit;
+    listScale: TComboBox;
     imgPreview: TImage;
     Label1: TLabel;
     Label2: TLabel;
     Label3: TLabel;
     Label4: TLabel;
     Label5: TLabel;
+    Label6: TLabel;
+    SavePictureDialog1: TSavePictureDialog;
     textBytes: TMemo;
     editWidth: TSpinEdit;
     editHeight: TSpinEdit;
     procedure btnCreateClick(Sender: TObject);
+    procedure btnSaveClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
 
   public
@@ -101,13 +105,15 @@ end;
 procedure TfrmMain.btnCreateClick(Sender: TObject);
 var
   pngbmp: TPortableNetworkGraphic;
-  w,h: Integer;
+  w,h,sc: Integer;
   x,y,xs: Integer;
   s: String;
   values: Array of Byte;
   i: Integer;
   a: TStringArray;
 begin
+  if listScale.ItemIndex < 0 then listScale.ItemIndex := 0;
+  sc := 0;
   w := editWidth.Value * 8;
   h := editHeight.Value * 8;
   s := textBytes.Text;
@@ -138,12 +144,30 @@ begin
       y := 0;
     end;
   end;
-  imgPreview.Width := w * 2;
-  imgPreview.Height := h * 2;
+  case listScale.ItemIndex of
+    0: sc := 1;
+    1: sc := 2;
+    2: sc := 3;
+    3: sc := 4;
+  end;
+  imgPreview.Width := w * sc;
+  imgPreview.Height := h * sc;
   imgPreview.Picture.Assign(pngbmp);
-  pngbmp.SaveToFile(textOutputFile.Text);
   pngbmp.Free;
 
+end;
+
+procedure TfrmMain.btnSaveClick(Sender: TObject);
+begin
+  if SavePictureDialog1.Execute then
+  begin
+    imgPreview.Picture.SaveToFile(SavePictureDialog1.FileName);
+  end;
+end;
+
+procedure TfrmMain.FormCreate(Sender: TObject);
+begin
+  SavePictureDialog1.Filter := 'Portable Network Graphic (*.png)|*.png';
 end;
 
 end.
