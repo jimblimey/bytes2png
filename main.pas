@@ -118,8 +118,8 @@ begin
   h := editHeight.Value * 8;
   s := textBytes.Text;
   a := s.Split(',');
-  SetLength(values,High(a));
-  for i := 0 to High(values) do
+  SetLength(values,Length(a));
+  for i := 0 to Length(values)-1 do
   begin
     values[i] := trim(a[i]).ToInteger;
   end;
@@ -127,7 +127,7 @@ begin
   pngbmp.SetSize(w,h);
   y := 0;
   xs := 0;
-  for i := 0 to High(values) do
+  for i := 0 to Length(values)-1 do
   begin
     s := DecToBin(values[i]);
     for x := 1 to 8 do
